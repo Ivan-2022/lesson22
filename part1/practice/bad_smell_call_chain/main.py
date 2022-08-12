@@ -2,44 +2,23 @@
 # оперировали внутренним состоянием, 
 # а не использовали цепочку вызовов объектов
 
-class Room:
-    def get_name(self):
-        return 42
-
-
-class Street:
-    def get_room(self) -> Room:
-        return Room()
-
-
-class City:
-    def get_street(self) -> Street:
-        return Street()
-
-    def population(self):
-        return 100500
-
-
-class Country:
-    def get_city(self) -> City:
-        return City()
-
-
-class Planet:
-    def get_contry(self) -> Country:
-        return Country()
-
-
 class Person:
-    def __init__(self):
-        self.planet = Planet()
+    def __init__(self, city: str, street: str, room: int):
+        self.city = city
+        self.street = street
+        self.room = room
 
     def get_person_room(self):
-        return self.planet.get_contry().get_city().get_street().get_room().get_name()
+        return self.room
+
+    def get_room_street(self):
+        return self.street
 
     def get_city_population(self):
-        return self.planet.get_contry().get_city().population()
+        return self.city
 
 
-# TODO после выполнения задания попробуйте
-# сделать экземпляр класса person и вызвать новые методы.
+# person = Person('Chita', 'Lenina str', 1)
+# print(person.get_city_population())
+# print(person.get_room_street())
+# print(person.get_person_room())
